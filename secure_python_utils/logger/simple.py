@@ -34,7 +34,7 @@ class LoggerConfig:
             self.logger = logging.getLogger(__name__)
     
     @classmethod
-    def get_logger(cls, file_name: str):
+    def get_logger(cls, file_name: str = "app.log"):
         if cls._instance is None:
             cls._instance = cls(file_name)
         return cls._instance.logger
@@ -44,7 +44,7 @@ class LoggerConfig:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             logger = LoggerConfig.get_logger()
-            logging.info(f"Start {func.__name__} args={args}, kwargs={kwargs}")
+            logger.info(f"Start {func.__name__} args={args}, kwargs={kwargs}")
             result = func(*args, **kwargs)
             logger.info(f"End {func.__name__} result={result}")
             return result
