@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "secure-python-utils"
 version = "0.1.0"
 description = "Best security utils for FastAPI: Argon2, rate limiting, logging"
-readme = ".linked
+readme = "README.md"
 authors = [{name = "CodesForge", email = "vkmgscarf4@gmail.com"}]
 license = {text = "MIT"}
 requires-python = ">=3.9"
@@ -14,7 +14,7 @@ dependencies = [
     "argon2-cffi>=23.1.0",
     "slowapi>=0.1.9",
     "loguru>=0.7.0",
-    "pydantic-settings>=2.0.0",
+    "pydantic-settings>=2.0.0"
 ]
 
 [project.urls]
