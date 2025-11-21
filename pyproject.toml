@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "secure-python-utils"
-version = "0.1.2"
+version = "0.1.3"
 description = "Best security utils for FastAPI: Argon2, rate limiting, logging"
 readme = "README.md"
 authors = [{name = "CodesForge", email = "vkmgscarf4@gmail.com"}]
