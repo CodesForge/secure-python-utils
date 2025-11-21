@@ -11,7 +11,7 @@ A modern, fast, and secure toolkit to help build robust APIs and backends with P
 
 ## Installation
 ```bash
-pip install secure-python-utils
+pip install secure-python-utils==0.1.2
 ```
 
 ## Quick Start
