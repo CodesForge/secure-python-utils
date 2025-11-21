@@ -5,8 +5,7 @@ from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 
 class PasswordService:
-    def init(self):
-        self._ph: PasswordHasher | None = None
+    _ph: PasswordHasher | None = None
     
     @classmethod
     def ph(cls) -> PasswordHasher:
