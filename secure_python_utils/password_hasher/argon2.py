@@ -1,4 +1,4 @@
-from future import annotations
+from __future__ import annotations
 from ..settings import settings
 
 from argon2 import PasswordHasher
