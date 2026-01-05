@@ -7,11 +7,11 @@ get_logger = LoggerConfig.get_logger
 logged = LoggerConfig.logged
 
 __all__ = [
-    "PasswordService",
+    "hash_service",
     "get_logger",
     "logged",
     "RateLimiter",
     "settings",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.1.5"

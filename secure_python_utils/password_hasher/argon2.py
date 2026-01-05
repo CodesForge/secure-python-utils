@@ -1,31 +1,44 @@
 from __future__ import annotations
-from ..settings import settings
 
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 
-class PasswordService:
-    _ph: PasswordHasher | None = None
+from typing import Optional
+
+class hash_service:
+    def __init__(
+        self,
+        time_cost: int = 6,
+        parallelism: int = 8,
+        hash_len: int = 32,
+        salt_len: int = 16,
+        memory_cost: int = 102400,
+    ):
+        self._memory_cost = memory_cost
+        self._salt_len = salt_len
+        self._hash_len = hash_len
+        self._parallelism = parallelism
+        self._time_const = time_cost
+        self._ph: Optional[PasswordHasher] = None
     
-    @classmethod
-    def ph(cls) -> PasswordHasher:
-        if cls._ph is None:
-            cls._ph = PasswordHasher(
-                time_cost=settings.argon2_time_cost,
-                parallelism=settings.argon2_parallelism,
-                hash_len=settings.argon2_hash_len,
-                salt_len=settings.argon2_salt_len,
-                memory_cost=settings.argon2_memory_cost,
+    @property
+    def ph(self) -> PasswordHasher:
+        if self._ph is None:
+            self._ph = PasswordHasher(
+                time_cost=self._time_const,
+                parallelism=self._parallelism,
+                hash_len=self._hash_len,
+                salt_len=self._salt_len,
+                memory_cost=self._memory_cost,
             )
-        return cls._ph
+        return self._ph
     
-    @classmethod
-    def hash(cls, password: str) -> str:
-        return cls.ph().hash(password)
+    async def hash(self, password: str) -> str:
+        return self.ph.hash(password)
     
-    @classmethod
-    def verify(cls, hashed: str, password: str) -> bool:
+    async def verify(self, hash: str, password: str) -> bool:
         try:
-            return cls.ph().verify(hashed, password)
+            return self.ph.verify(hash, password)
         except VerifyMismatchError:
             return False
+            
